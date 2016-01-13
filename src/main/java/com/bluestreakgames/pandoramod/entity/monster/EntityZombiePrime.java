@@ -1,6 +1,7 @@
 package com.bluestreakgames.pandoramod.entity.monster;
 
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,6 +12,8 @@ import net.minecraft.world.World;
  * Created by jkantzer on 1/12/16.
  */
 public class EntityZombiePrime extends EntityZombie {
+    private int itemTier;
+
     public EntityZombiePrime(World worldIn) {
         super(worldIn);
     }
@@ -20,7 +23,7 @@ public class EntityZombiePrime extends EntityZombie {
     protected void func_180481_a(DifficultyInstance p_180481_1_) {
         super.func_180481_a(p_180481_1_);
 
-        int itemTier = rand.nextInt(4)+1;
+        itemTier = rand.nextInt(4)+1;
         switch(itemTier){
             case 1:
                 this.setCurrentItemOrArmor(0, new ItemStack(Items.golden_sword));
@@ -46,5 +49,29 @@ public class EntityZombiePrime extends EntityZombie {
                 }
             }
         }
+    }
+
+    @Override
+    protected Item getDropItem() {
+        switch(rand.nextInt(6)) {
+            case 0:
+                switch(itemTier) {
+                    case 1:
+                        return Items.gold_ingot;
+                    case 2:
+                        return Item.getItemFromBlock(Blocks.cobblestone);
+                    case 3:
+                        return Items.iron_ingot;
+                    case 4:
+                        return Items.diamond;
+                }
+            case 1:
+                return Items.coal;
+            case 2:
+                return Items.iron_pickaxe;
+            default:
+                break;
+        }
+        return Items.rotten_flesh;
     }
 }
