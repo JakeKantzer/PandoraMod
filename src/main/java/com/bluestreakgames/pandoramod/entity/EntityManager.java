@@ -1,10 +1,7 @@
 package com.bluestreakgames.pandoramod.entity;
 
 import com.bluestreakgames.pandoramod.PandoraMod;
-import com.bluestreakgames.pandoramod.entity.monster.ChickenPrime;
-import com.bluestreakgames.pandoramod.entity.monster.CreeperPrime;
-import com.bluestreakgames.pandoramod.entity.monster.GhastPrime;
-import com.bluestreakgames.pandoramod.entity.monster.IPandoraMob;
+import com.bluestreakgames.pandoramod.entity.monster.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EnumCreatureType;
@@ -31,6 +28,8 @@ public class EntityManager {
         monsters.add(gp);
         ChickenPrime chp = new ChickenPrime();
         monsters.add(chp);
+        ZombiePrime zp = new ZombiePrime();
+        monsters.add(zp);
 
         for(IPandoraMob monster : monsters) {
             EntityRegistry.registerModEntity(monster.getEntityClass(), monster.getEntityName(), ++idCounter, PandoraMod.instance, monster.getTrackingRange(), monster.getUpdateFrequency(), monster.getSendsVelocityUpdates(), monster.getEggPrimary(), monster.getEggSecondary());
@@ -38,6 +37,7 @@ public class EntityManager {
         }
 
         DungeonHooks.addDungeonMob("CreeperPrime", 100);
+        DungeonHooks.addDungeonMob("ZombiePrime", 100);
         DungeonHooks.addDungeonMob("ChickenPrime", 50);
     }
 
