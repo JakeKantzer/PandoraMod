@@ -6,11 +6,18 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.ZombieEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * Created by jkantzer on 1/12/16.
  */
 public class ZombiePrime implements IPandoraMob {
+    public ZombiePrime() {
+        MinecraftForge.EVENT_BUS.register(new ZombiePrimeEventHandler());
+    }
+
     @Override
     public Class<? extends EntityLiving> getEntityClass() {
         return EntityZombiePrime.class;
@@ -74,5 +81,14 @@ public class ZombiePrime implements IPandoraMob {
     @Override
     public Render getEntityRenderer(RenderManager manager) {
         return new RenderZombiePrime(manager);
+    }
+
+    public class ZombiePrimeEventHandler {
+        @SubscribeEvent
+        public void zombiePrimeReinforcement(ZombieEvent.SummonAidEvent event) {
+            if (event.entity.getClass() == EntityZombiePrime.class) {
+                event.customSummonedAid = new EntityZombiePrime(event.world);
+            }
+        }
     }
 }

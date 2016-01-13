@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 public class RenderZombiePrime extends RenderZombie {
     private static final ResourceLocation zombiePrimeTextures = new ResourceLocation("pandoramod:textures/entity/zombieprime/zombieprime.png");
     // We need to redefine this because the superclass marked it private :(
-    private static final ResourceLocation zombieVillagerTextures = new ResourceLocation("textures/entity/zombie/zombie_villager.png");
+    private static final ResourceLocation zombieVillagerTextures = new ResourceLocation("pandoramod:textures/entity/zombieprime/zombieprime_villager.png");
 
     public RenderZombiePrime(RenderManager manager) {
         super(manager);

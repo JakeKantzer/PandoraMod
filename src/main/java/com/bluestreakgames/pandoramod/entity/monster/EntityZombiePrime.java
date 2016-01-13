@@ -1,11 +1,17 @@
 package com.bluestreakgames.pandoramod.entity.monster;
 
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 /**
@@ -73,5 +79,26 @@ public class EntityZombiePrime extends EntityZombie {
                 break;
         }
         return Items.rotten_flesh;
+    }
+
+    // Zombie Primes *always* make more when killing villagers
+    @Override
+    public void onKillEntity(EntityLivingBase entityLivingIn) {
+        if ((this.worldObj.getDifficulty() == EnumDifficulty.NORMAL || this.worldObj.getDifficulty() == EnumDifficulty.HARD) && entityLivingIn instanceof EntityVillager)
+        {
+            EntityZombiePrime zp = new EntityZombiePrime(this.worldObj);
+            zp.copyLocationAndAnglesFrom(entityLivingIn);
+            this.worldObj.removeEntity(entityLivingIn);
+            zp.func_180482_a(this.worldObj.getDifficultyForLocation(new BlockPos(zp)), (IEntityLivingData)null);
+            zp.setVillager(true);
+
+            if (entityLivingIn.isChild())
+            {
+                zp.setChild(true);
+            }
+
+            this.worldObj.spawnEntityInWorld(zp);
+            this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1016, new BlockPos((int)this.posX, (int)this.posY, (int)this.posZ), 0);
+        }
     }
 }
