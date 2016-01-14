@@ -4,7 +4,6 @@ import com.bluestreakgames.pandoramod.PandoraMod;
 import com.bluestreakgames.pandoramod.entity.monster.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
