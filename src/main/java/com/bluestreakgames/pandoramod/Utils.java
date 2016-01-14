@@ -27,7 +27,7 @@ public class Utils {
         Blocks.fire.setFireInfo(Blocks.birch_stairs, 10, 40);
         Blocks.fire.setFireInfo(Blocks.spruce_stairs, 10, 40);
         Blocks.fire.setFireInfo(Blocks.jungle_stairs, 10, 40);
-        Blocks.fire.setFireInfo(Blocks.log, 10, 5);
-        Blocks.fire.setFireInfo(Blocks.log2, 10, 5);
+        Blocks.fire.setFireInfo(Blocks.log, 10, 10);
+        Blocks.fire.setFireInfo(Blocks.log2, 10, 10);
     }
 }
