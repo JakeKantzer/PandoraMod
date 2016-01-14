@@ -16,6 +16,7 @@ public class CommonProxy {
     public void init(FMLInitializationEvent event) {
         PandoraRecipes.addRecipes();
         EntityManager.initMonsters();
+        Utils.setFireInfo();
     }
 
     public void postInit(FMLPostInitializationEvent event) {
