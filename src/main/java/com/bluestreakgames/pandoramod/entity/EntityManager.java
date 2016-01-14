@@ -85,7 +85,6 @@ public class EntityManager {
                 BiomeGenBase.roofedForest,
                 BiomeGenBase.savanna,
                 BiomeGenBase.savannaPlateau,
-                BiomeGenBase.sky,
                 BiomeGenBase.stoneBeach,
                 BiomeGenBase.swampland,
                 BiomeGenBase.taiga,
