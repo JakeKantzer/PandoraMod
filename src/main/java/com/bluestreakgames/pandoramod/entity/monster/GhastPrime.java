@@ -6,6 +6,8 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by jkantzer on 1/10/16.
@@ -72,6 +74,7 @@ public class GhastPrime implements IPandoraMob {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Render getEntityRenderer(RenderManager manager) {
         return new RenderGhastPrime(manager);
     }

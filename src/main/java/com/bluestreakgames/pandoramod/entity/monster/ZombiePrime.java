@@ -9,6 +9,8 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.ZombieEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by jkantzer on 1/12/16.
@@ -79,6 +81,7 @@ public class ZombiePrime implements IPandoraMob {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Render getEntityRenderer(RenderManager manager) {
         return new RenderZombiePrime(manager);
     }
